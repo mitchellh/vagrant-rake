@@ -3,7 +3,7 @@ require File.expand_path("../lib/vagrant-rake/version", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "vagrant-rake"
-  s.version     = Vagrant::Rake::VERSION
+  s.version     = VagrantRake::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = []
   s.email       = []
