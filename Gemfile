@@ -8,4 +8,5 @@ gem "radar", :git => "git://github.com/mitchellh/radar.git"
 
 group :test do
   gem "protest", "~> 0.4.0"
+  gem "mocha", "~> 0.9.8"
 end
