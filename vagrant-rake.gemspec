@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.name        = "vagrant-rake"
   s.version     = VagrantRake::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = []
-  s.email       = []
+  s.authors     = ["Mitchell Hashimoto"]
+  s.email       = ["mitchell.hashimoto@gmail.com"]
   s.homepage    = "http://rubygems.org/gems/vagrant-rake"
-  s.summary     = "TODO: Write a gem summary"
-  s.description = "TODO: Write a gem description"
+  s.summary     = "A Vagrant plugin to execute `rake` commands from the host in the VM"
+  s.description = "A Vagrant plugin to execute `rake` commands from the host in the VM"
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "vagrant-rake"
