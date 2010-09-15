@@ -1,8 +1,9 @@
 require 'vagrant'
+require 'vagrant-rake/command'
+require 'vagrant-rake/middleware'
 
-if Vagrant::VERSION < "0.6.0"
-  STDERR.puts "Vagrant 0.6 is required for this plugin to work."
-  exit 1
+rake = Vagrant::Action::Builder.new do
+  use VagrantRake::Middleware
 end
 
-require 'vagrant-rake/command'
+Vagrant::Action.register(:rake, rake)
