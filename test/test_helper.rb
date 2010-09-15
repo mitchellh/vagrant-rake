@@ -16,6 +16,20 @@ class Protest::TestCase
   ensure
     mocha_teardown
   end
+
+  # Helper to silence streams, courtesy of Ruby Facets library.
+  def silence_stream(*streams) #:yeild:
+    on_hold = streams.collect{ |stream| stream.dup }
+    streams.each do |stream|
+      stream.reopen(RUBY_PLATFORM =~ /mswin/ ? 'NUL:' : '/dev/null')
+      stream.sync = true
+    end
+    yield
+  ensure
+    streams.each_with_index do |stream, i|
+      stream.reopen(on_hold[i])
+    end
+  end
 end
 
 Protest.report_with(:documentation)
