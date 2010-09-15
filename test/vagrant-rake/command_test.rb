@@ -19,7 +19,7 @@ Protest.describe("`vagrant rake` command") do
 
     assert !vm.created? # sanity
     vm.expects(:ssh).never
-    @klass.new(["db:migrate"], {}, { :env => @env })
+    @klass.new(["db:migrate"], {}, { :env => @env }).execute
   end
 
   should "not execute the command on non-running VMs" do
@@ -28,7 +28,7 @@ Protest.describe("`vagrant rake` command") do
     vm.stubs(:created?).returns(true)
     vm.stubs(:running?).returns(false)
     vm.expects(:ssh).never
-    @klass.new(["db:migrate"], {}, { :env => @env })
+    @klass.new(["db:migrate"], {}, { :env => @env }).execute
   end
 
   should "execute the command on running VMs" do
@@ -37,6 +37,6 @@ Protest.describe("`vagrant rake` command") do
     vm.stubs(:created?).returns(true)
     vm.stubs(:running?).returns(true)
     vm.ssh.expects(:execute).once
-    @klass.new(["db:migrate"], {}, { :env => @env })
+    @klass.new(["db:migrate"], {}, { :env => @env }).execute
   end
 end
