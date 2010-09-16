@@ -14,6 +14,7 @@ module VagrantRake
         command = "rake #{env["rake.command"]}".strip
 
         env["vm"].ssh.execute do |ssh|
+          ssh.exec!("cd #{working_directory}")
           ssh.exec!(command) do |channel, type, data|
             env.ui.info data, :_translate => false, :_prefix => false if type != :exit_status
           end
@@ -21,6 +22,12 @@ module VagrantRake
       end
 
       @app.call(env)
+    end
+
+    protected
+
+    def working_directory
+      @env["rake.cwd"] || @env["config"].vm.shared_folders["v-root"][:guestpath]
     end
   end
 end
