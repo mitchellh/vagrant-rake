@@ -1,6 +1,8 @@
 module VagrantRake
   # A Vagrant middleware which executes a rake task on a given
-  # VM.
+  # VM. This task will run "rake" on the VM that this action sequence
+  # was run on. If an env variable "rake.command" is populated, then
+  # this command will be executed by rake.
   class Middleware
     def initialize(app, env)
       @app = app
