@@ -21,10 +21,12 @@ Next, install this gem:
     gem install vagrant-rake
 
 The `vagrant rake` command should now be available. To use it, simply
-pass use it as if you were running rake locally:
+pass use it as if you were running rake locally. The various ways to
+call the command is shown below:
 
     vagrant rake db:migrate
     vagrant rake build
+    vagrant rake test --cwd /some/other/directory
 
 The plugin will auotomatically run your rake task on the VM, forwarding
 the output to you on the host.
