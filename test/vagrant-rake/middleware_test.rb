@@ -8,7 +8,7 @@ Protest.describe("rake middleware") do
     @instance = @klass.new(@app, @env)
 
     @env["vm"].stubs(:created?).returns(true)
-    @env["vm"].stubs(:running?).returns(true)
+    @env["vm"].vm.stubs(:running?).returns(true)
   end
 
   should "do nothing if the VM is not created" do
@@ -18,7 +18,7 @@ Protest.describe("rake middleware") do
   end
 
   should "do nothing if the VM is not running" do
-    @env["vm"].stubs(:running?).returns(false)
+    @env["vm"].vm.stubs(:running?).returns(false)
     @env["vm"].expects(:ssh).never
     @instance.call(@env)
   end

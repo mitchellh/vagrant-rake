@@ -10,7 +10,7 @@ module VagrantRake
     end
 
     def call(env)
-      if env["vm"].created? && env["vm"].running?
+      if env["vm"].created? && env["vm"].vm.running?
         command = "rake #{env["rake.command"]}".strip
 
         env["vm"].ssh.execute do |ssh|
