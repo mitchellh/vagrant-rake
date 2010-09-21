@@ -16,7 +16,7 @@ module VagrantRake
         env["vm"].ssh.execute do |ssh|
           ssh.exec!("cd #{working_directory}")
           ssh.exec!(command) do |channel, type, data|
-            env.ui.info data, :_translate => false, :_prefix => false if type != :exit_status
+            env.ui.info data.strip, :_translate => false, :_prefix => false if type != :exit_status
           end
         end
       end
