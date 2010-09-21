@@ -29,7 +29,7 @@ Protest.describe("rake middleware") do
 
     ssh.expects(:exec!).with("cd /vagrant; rake")
 
-    @instance.call(@env)
+    silence_stream($stdout) { @instance.call(@env) }
   end
 
   should "run the specified rake command via SSH on the VM" do
@@ -39,7 +39,7 @@ Protest.describe("rake middleware") do
     ssh.expects(:exec!).with("cd /vagrant; rake db:migrate")
 
     @env["rake.command"] = "db:migrate"
-    @instance.call(@env)
+    silence_stream($stdout) { @instance.call(@env) }
   end
 
   should "run the rake command in the specified cwd" do
@@ -49,6 +49,6 @@ Protest.describe("rake middleware") do
     ssh.expects(:exec!).with("cd /foo/bar; rake")
 
     @env["rake.cwd"] = "/foo/bar"
-    @instance.call(@env)
+    silence_stream($stdout) { @instance.call(@env) }
   end
 end
