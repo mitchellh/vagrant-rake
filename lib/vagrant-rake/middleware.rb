@@ -14,6 +14,8 @@ module VagrantRake
         command = "rake #{env["rake.command"]}".strip
 
         env["vm"].ssh.execute do |ssh|
+          env.ui.info "vagrant.plugins.rake.executing", :command => command
+
           ssh.exec!("cd #{working_directory}; #{command}") do |channel, type, data|
             # Print the data directly to STDOUT, not doing any newlines
             # or any extra formatting of our own

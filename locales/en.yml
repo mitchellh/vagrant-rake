@@ -1,0 +1,5 @@
+en:
+  vagrant:
+    plugins:
+      rake:
+        executing: "Executing: %{command}"
