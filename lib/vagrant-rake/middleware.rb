@@ -14,9 +14,10 @@ module VagrantRake
         command = "rake #{env["rake.command"]}".strip
 
         env["vm"].ssh.execute do |ssh|
-          ssh.exec!("cd #{working_directory}")
-          ssh.exec!(command) do |channel, type, data|
-            env.ui.info data.strip, :_translate => false, :_prefix => false if type != :exit_status
+          ssh.exec!("cd #{working_directory}; #{command}") do |channel, type, data|
+            # Print the data directly to STDOUT, not doing any newlines
+            # or any extra formatting of our own
+            $stdout.print(data) if type != :exit_status
           end
         end
       end

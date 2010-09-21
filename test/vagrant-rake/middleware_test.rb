@@ -27,9 +27,7 @@ Protest.describe("rake middleware") do
     ssh = mock("ssh")
     @env["vm"].ssh.expects(:execute).yields(ssh)
 
-    ssh_seq = sequence("ssh")
-    ssh.expects(:exec!).with("cd /vagrant").in_sequence(ssh_seq)
-    ssh.expects(:exec!).with("rake").in_sequence(ssh_seq)
+    ssh.expects(:exec!).with("cd /vagrant; rake")
 
     @instance.call(@env)
   end
@@ -38,9 +36,7 @@ Protest.describe("rake middleware") do
     ssh = mock("ssh")
     @env["vm"].ssh.expects(:execute).yields(ssh)
 
-    ssh_seq = sequence("ssh")
-    ssh.expects(:exec!).with("cd /vagrant").in_sequence(ssh_seq)
-    ssh.expects(:exec!).with("rake db:migrate").in_sequence(ssh_seq)
+    ssh.expects(:exec!).with("cd /vagrant; rake db:migrate")
 
     @env["rake.command"] = "db:migrate"
     @instance.call(@env)
@@ -50,9 +46,7 @@ Protest.describe("rake middleware") do
     ssh = mock("ssh")
     @env["vm"].ssh.expects(:execute).yields(ssh)
 
-    ssh_seq = sequence("ssh")
-    ssh.expects(:exec!).with("cd /foo/bar").in_sequence(ssh_seq)
-    ssh.expects(:exec!).with("rake").in_sequence(ssh_seq)
+    ssh.expects(:exec!).with("cd /foo/bar; rake")
 
     @env["rake.cwd"] = "/foo/bar"
     @instance.call(@env)
