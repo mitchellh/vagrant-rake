@@ -19,6 +19,10 @@ module VagrantRake
             # or any extra formatting of our own
             $stdout.print(data) if type != :exit_status
           end
+
+          # Puts out an ending newline just to make sure we end on a new
+          # line.
+          $stdout.puts
         end
       end
 
