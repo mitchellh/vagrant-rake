@@ -1,6 +1,6 @@
 module VagrantRake
   class Command < Vagrant::Command::Base
-    register "rake RAKE_COMMAND", "Run a rake task inside the VM environment"
+    register "rake", "Run a rake task inside the VM environment"
     argument :rake_command, :type => :array, :required => false, :desc => "The command to run on the VM via Rake"
     class_option :cwd, :type => :string, :default => nil
 
