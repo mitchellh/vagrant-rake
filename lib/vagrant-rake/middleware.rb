@@ -34,7 +34,7 @@ module VagrantRake
     protected
 
     def working_directory
-      @env["rake.cwd"] || @env["config"].vm.shared_folders["v-root"][:guestpath]
+      @env["rake.cwd"] || @env["config"].rake.directory || @env["config"].vm.shared_folders["v-root"][:guestpath]
     end
   end
 end

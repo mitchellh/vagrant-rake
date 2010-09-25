@@ -42,13 +42,30 @@ Protest.describe("rake middleware") do
     silence_stream($stdout) { @instance.call(@env) }
   end
 
-  should "run the rake command in the specified cwd" do
-    ssh = mock("ssh")
-    @env["vm"].ssh.expects(:execute).yields(ssh)
+  context "cwd" do
+    setup do
+      @ssh = mock("ssh")
+      @env["vm"].ssh.expects(:execute).yields(@ssh)
+      @env["rake.cwd"] = nil
+    end
 
-    ssh.expects(:exec!).with("cd /foo/bar; rake")
+    should "run the rake command in the specified cwd" do
+      @ssh.expects(:exec!).with("cd /foo/bar; rake")
 
-    @env["rake.cwd"] = "/foo/bar"
-    silence_stream($stdout) { @instance.call(@env) }
+      @env["rake.cwd"] = "/foo/bar"
+      silence_stream($stdout) { @instance.call(@env) }
+    end
+
+    should "run the rake command with the configured directory if middleware variable is not set" do
+      @env.env.config.rake.directory = "/configured"
+
+      @ssh.expects(:exec!).with("cd /configured; rake")
+      silence_stream($stdout) { @instance.call(@env) }
+    end
+
+    should "run the rake command with the root shared directory if nothing configured" do
+      @ssh.expects(:exec!).with("cd /vagrant; rake")
+      silence_stream($stdout) { @instance.call(@env) }
+    end
   end
 end
