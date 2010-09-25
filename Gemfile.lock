@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/mitchellh/radar.git
-  revision: cec6c4bed8a26ca7512f32ddfdb2b25b3b710a8e
-  specs:
-    radar (0.4.0.dev)
-      builder (~> 2.0)
-      json (>= 1.4.6)
-
-GIT
   remote: git://github.com/mitchellh/vagrant.git
   revision: daa6caffe98d6285a0dad0467f002dd57e822985
   specs:
@@ -32,7 +24,6 @@ GEM
   specs:
     abstract (1.0.0)
     archive-tar-minitar (0.5.2)
-    builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     ffi (0.6.3)
@@ -57,6 +48,5 @@ PLATFORMS
 DEPENDENCIES
   mocha (~> 0.9.8)
   protest (~> 0.4.0)
-  radar!
   vagrant!
   vagrant-rake!
