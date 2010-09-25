@@ -3,3 +3,4 @@ en:
     plugins:
       rake:
         executing: "Executing: %{command}"
+        config_directory: "Directory must be a string."

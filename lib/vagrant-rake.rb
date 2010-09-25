@@ -1,4 +1,5 @@
 require 'vagrant'
+require 'vagrant-rake/config'
 require 'vagrant-rake/command'
 require 'vagrant-rake/middleware'
 
