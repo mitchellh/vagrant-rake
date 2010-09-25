@@ -31,6 +31,13 @@ call the command is shown below:
 The plugin will auotomatically run your rake task on the VM, forwarding
 the output to you on the host.
 
+You can also specify the default working directory for executed
+rake tasks in your Vagrantfile:
+
+    Vagrant::Config.run do |config|
+      config.rake.directory = "/my/custom/directory"
+    end
+
 ## Working with the Plugin Source
 
 If you'd like to work with the plugin source (for learning purposes or
