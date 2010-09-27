@@ -7,16 +7,11 @@ the VM to simply run a rake task.
 
 This gem is also a good example of how to create a proper Vagrant plugin.
 
-**NOTE:** This plugin requires Vagrant 0.6 or later. At the time of this writing
-Vagrant 0.6 is still in development. This is the first plugin being written to
-both test the system and showcase how a plugin works.
+**NOTE:** This plugin requires Vagrant 0.6 or later.
 
 ## Installing / Getting Started
 
-To use this plugin, first install Vagrant 0.6 or later. At the time of
-creating this README, Vagrant 0.6 is still not released, so you would have
-to build from [the git repository](http://github.com/mitchellh/vagrant).
-Next, install this gem:
+To use this plugin, first install Vagrant 0.6 or later. Next, install this gem:
 
     gem install vagrant-rake
 
