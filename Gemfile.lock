@@ -16,7 +16,7 @@ GIT
 PATH
   remote: .
   specs:
-    vagrant-rake (0.0.1)
+    vagrant-rake (0.1.0)
       vagrant (~> 0.6.0)
 
 GEM
