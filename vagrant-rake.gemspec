@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "vagrant-rake"
 
-  s.add_dependency "vagrant", "~> 0.6.0"
+  s.add_dependency "vagrant", "~> 0.8.0"
   s.add_development_dependency "protest", "~> 0.4.0"
   s.add_development_dependency "mocha", "~> 0.9.8"
   s.add_development_dependency "bundler", ">= 1.0.0"
