@@ -23,7 +23,7 @@ call the command is shown below:
     vagrant rake build
     vagrant rake test --cwd /some/other/directory
 
-The plugin will auotomatically run your rake task on the VM, forwarding
+The plugin will automatically run your rake task on the VM, forwarding
 the output to you on the host.
 
 You can also specify the default working directory for executed
