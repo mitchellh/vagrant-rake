@@ -13,15 +13,19 @@ This gem is also a good example of how to create a proper Vagrant plugin.
 
 To use this plugin, first install Vagrant 0.6 or later. Next, install this gem:
 
-    gem install vagrant-rake
+```shell
+gem install vagrant-rake
+```
 
 The `vagrant rake` command should now be available. To use it, simply
 pass use it as if you were running rake locally. The various ways to
 call the command is shown below:
 
-    vagrant rake db:migrate
-    vagrant rake build
-    vagrant rake test --cwd /some/other/directory
+```shell
+vagrant rake db:migrate
+vagrant rake build
+vagrant rake test --cwd /some/other/directory
+```
 
 The plugin will automatically run your rake task on the VM, forwarding
 the output to you on the host.
@@ -29,9 +33,11 @@ the output to you on the host.
 You can also specify the default working directory for executed
 rake tasks in your Vagrantfile:
 
-    Vagrant::Config.run do |config|
-      config.rake.directory = "/my/custom/directory"
-    end
+```ruby
+Vagrant::Config.run do |config|
+  config.rake.directory = "/my/custom/directory"
+end
+```
 
 ## Working with the Plugin Source
 
@@ -39,11 +45,15 @@ If you'd like to work with the plugin source (for learning purposes or
 to make a contribution), then clone out this repository, then run the
 test suite to verify everything is working:
 
-    git clone git://github.com/mitchellh/vagrant-rake.git
-    cd vagrant-rake
+```shell
+git clone git://github.com/mitchellh/vagrant-rake.git
+cd vagrant-rake
+```
 
 Then bundle the environment to get the required gems, and run rake to
 verify that the test suite passes:
 
-    bundle install
-    rake
+```shell
+bundle install
+rake
+```
